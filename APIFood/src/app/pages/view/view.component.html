@@ -1,0 +1,18 @@
+<input type="text" name="ingredient" placeholder="Introduce un ingrediente" #ingredient><br><br>
+<input type="text" name="ingredient2" placeholder="Introduce un ingrediente"  #ingredient2><br><br>
+<input type="text" name="ingredient3" placeholder="Introduce un ingrediente"  #ingredient3><br><br>
+<input type="text" name="ingredient4" placeholder="Introduce un ingrediente"  #ingredient4><br><br>
+
+<button (click)="showReceiptbyIngredient(ingredient.value + '+' + ingredient2.value + '+'+ ingredient3.value + '+' + ingredient4.value)">Mostrar recetas por ingrediente</button><br><br>    
+
+<div class="row" *ngIf ="receipts !=null" class="receipts">
+    <div *ngFor="let item of receipts, index as i" class="card-receipt">
+        <img  src="{{receipts[i].recipe.image}}" alt="Card image cap">
+        <div class="card-body">
+            <h3 class="title">{{receipts[i].recipe.label}}</h3>
+            <p class="text"><span style=font-weight:bold>Ingredientes: </span>{{receipts[i].recipe.ingredientLines.join(", ")}} <br></p> 
+            <a href="{{receipts[i].recipe.url}}" class="button">Ver receta</a><br><br>
+        
+        </div>
+    </div>
+</div>
